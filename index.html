@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HP Service Professional - Service HP 1 Hari Jadi</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animate-slideInLeft {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .animate-slideInRight {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 5px;
+        }
+
+        /* Hover effects */
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            cursor: pointer;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80%;
+            object-fit: contain;
+            animation: fadeIn 0.5s;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
+
+        /* Counter styles */
+        .counter-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 transition-shadow duration-300">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-microchip text-3xl text-blue-600 animate-pulse"></i>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">HP Service</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition">Beranda</a>
+                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition">Layanan</a>
+                    <a href="#gallery" class="text-gray-700 hover:text-blue-600 transition">Galeri</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition">Testimoni</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition">Kontak</a>
+                </div>
+                
+                <a href="https://wa.me/6281234567890" target="_blank"
+                   class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition flex items-center space-x-2 hover-scale">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-90"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center mix-blend-overlay"></div>
+        
+        <!-- Animated floating elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-bounce" style="animation-duration: 3s;"></div>
+            <div class="absolute bottom-20 right-10 w-32 h-32 bg-white/10 rounded-full animate-bounce" style="animation-duration: 4s; animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-white/10 rounded-full animate-pulse"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl text-white">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-fadeInUp">
+                    Service HP Profesional
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 animate-fadeInUp delay-1">
+                    Perbaikan Cepat & Berkualitas | 1 Hari Jadi
+                </p>
+                <div class="flex flex-wrap gap-4 animate-fadeInUp delay-2">
+                    <a href="#contact" 
+                       class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition hover-scale">
+                        Konsultasi Gratis
+                    </a>
+                    <a href="#gallery" 
+                       class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition">
+                        Lihat Galeri
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#services" class="text-white">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Layanan Kami</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 mt-4">Service cepat & berkualitas dengan garansi</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="service-card group bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center mb-4 transition transform group-hover:scale-110 group-hover:rotate-12">
+                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Service HP</h3>
+                    <p class="text-gray-600">Semua merk HP (Android, iPhone, HP Jadul)</p>
+                    <div class="mt-4 text-blue-600 text-sm font-semibold">Mulai dari Rp50.000</div>
+                </div>
+                
+                <div class="service-card group bg-gradient-to-br from-green-50 to-teal-50 p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-600 to-green-700 rounded-full flex items-center justify-center mb-4 transition transform group-hover:scale-110 group-hover:rotate-12">
+                        <i class="fas fa-microchip text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Ganti Sparepart</h3>
+                    <p class="text-gray-600">Sparepart original & berkualitas</p>
+                    <div class="mt-4 text-green-600 text-sm font-semibold">Garansi 3 Bulan</div>
+                </div>
+                
+                <div class="service-card group bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center mb-4 transition transform group-hover:scale-110 group-hover:rotate-12">
+                        <i class="fas fa-tools text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Aksesoris & Tools</h3>
+                    <p class="text-gray-600">Perlengkapan service lengkap</p>
+                    <div class="mt-4 text-purple-600 text-sm font-semibold">Lengkap & Original</div>
+                </div>
+                
+                <div class="service-card group bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-600 to-orange-600 rounded-full flex items-center justify-center mb-4 transition transform group-hover:scale-110 group-hover:rotate-12">
+                        <i class="fas fa-clock text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">1 Hari Jadi</h3>
+                    <p class="text-gray-600">Pengerjaan cepat & tepat waktu</p>
+                    <div class="mt-4 text-orange-600 text-sm font-semibold">Prioritas Service</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="counter-box p-6 rounded-xl">
+                    <i class="fas fa-smile text-4xl mb-3"></i>
+                    <div class="text-3xl font-bold counter" data-target="1500">0</div>
+                    <p class="mt-2">Pelanggan Puas</p>
+                </div>
+                <div class="counter-box p-6 rounded-xl">
+                    <i class="fas fa-mobile-alt text-4xl mb-3"></i>
+                    <div class="text-3xl font-bold counter" data-target="5000">0</div>
+                    <p class="mt-2">HP Terservice</p>
+                </div>
+                <div class="counter-box p-6 rounded-xl">
+                    <i class="fas fa-star text-4xl mb-3"></i>
+                    <div class="text-3xl font-bold counter" data-target="4.9">0</div>
+                    <p class="mt-2">Rating Kepuasan</p>
+                </div>
+                <div class="counter-box p-6 rounded-xl">
+                    <i class="fas fa-trophy text-4xl mb-3"></i>
+                    <div class="text-3xl font-bold counter" data-target="7">0</div>
+                    <p class="mt-2">Tahun Pengalaman</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Galeri</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 mt-4">Lihat hasil pekerjaan kami</p>
+            </div>
+            
+            <div x-data="{ activeTab: 'phones' }">
+                <div class="flex flex-wrap justify-center gap-2 mb-8">
+                    <button @click="activeTab = 'phones'" 
+                            :class="activeTab === 'phones' ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-200 text-gray-700'"
+                            class="px-6 py-2 rounded-full font-semibold transition hover-scale">
+                        <i class="fas fa-mobile-alt mr-2"></i>HP (Android/iPhone/Jadul)
+                    </button>
+                    <button @click="activeTab = 'accessories'" 
+                            :class="activeTab === 'accessories' ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-200 text-gray-700'"
+                            class="px-6 py-2 rounded-full font-semibold transition hover-scale">
+                        <i class="fas fa-headphones mr-2"></i>Aksesoris
+                    </button>
+                    <button @click="activeTab = 'spareparts'" 
+                            :class="activeTab === 'spareparts' ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-200 text-gray-700'"
+                            class="px-6 py-2 rounded-full font-semibold transition hover-scale">
+                        <i class="fas fa-microchip mr-2"></i>Sparepart
+                    </button>
+                    <button @click="activeTab = 'tools'" 
+                            :class="activeTab === 'tools' ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-200 text-gray-700'"
+                            class="px-6 py-2 rounded-full font-semibold transition hover-scale">
+                        <i class="fas fa-tools mr-2"></i>Alat Kerja
+                    </button>
+                    <button @click="activeTab = 'process'" 
+                            :class="activeTab === 'process' ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-200 text-gray-700'"
+                            class="px-6 py-2 rounded-full font-semibold transition hover-scale">
+                        <i class="fas fa-cogs mr-2"></i>Proses Pengerjaan
+                    </button>
+                </div>
+                
+                <!-- Phones Gallery - Android, iPhone, HP Jadul -->
+                <div x-show="activeTab === 'phones'" x-transition.duration.500ms>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="iPhone Repair" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">iPhone 13 Pro Max</h3>
+                                    <p class="text-sm">Ganti LCD + Battery</p>
+                                    <span class="inline-block mt-2 px-2 py-1 bg-blue-500 rounded-full text-xs">iPhone</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1610945264803-c22e62d2a7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1610945264803-c22e62d2a7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Samsung Repair" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Samsung S22 Ultra</h3>
+                                    <p class="text-sm">Service Camera + Port Charging</p>
+                                    <span class="inline-block mt-2 px-2 py-1 bg-green-500 rounded-full text-xs">Android</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1616348436168-de43ad0db179?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Xiaomi Repair" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Xiaomi 12 Pro</h3>
+                                    <p class="text-sm">Ganti Battery + Software Update</p>
+                                    <span class="inline-block mt-2 px-2 py-1 bg-green-500 rounded-full text-xs">Android</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1580910051074-3eb694886505?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Old Phone Repair" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Nokia Classic</h3>
+                                    <p class="text-sm">Service + Ganti Cover</p>
+                                    <span class="inline-block mt-2 px-2 py-1 bg-orange-500 rounded-full text-xs">HP Jadul</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional phone images -->
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1610792516331-4a79c1ad2f2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1610792516331-4a79c1ad2f2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Google Pixel" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Google Pixel 6</h3>
+                                    <p class="text-sm">Ganti Battery + LCD</p>
+                                    <span class="inline-block mt-2 px-2 py-1 bg-green-500 rounded-full text-xs">Android</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1585060544812-6b45742d762f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Oppo Repair" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Oppo Reno 8</h3>
+                                    <p class="text-sm">Ganti LCD + Frame</p>
+                                    <span class="inline-block mt-2 px-2 py-1 bg-green-500 rounded-full text-xs">Android</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1592899677977-9e10cb588f70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/1592899677977-9e10cb588f70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Vivo Repair" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Vivo V25</h3>
+                                    <p class="text-sm">Ganti Charging Port</p>
+                                    <span class="inline-block mt-2 px-2 py-1 bg-green-500 rounded-full text-xs">Android</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1603796846097-bee99e4a601f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1603796846097-bee99e4a601f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="iPhone SE" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">iPhone SE 2022</h3>
+                                    <p class="text-sm">Ganti Battery + Home Button</p>
+                                    <span class="inline-block mt-2 px-2 py-1 bg-blue-500 rounded-full text-xs">iPhone</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accessories Gallery -->
+                <div x-show="activeTab === 'accessories'" x-transition.duration.500ms>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1592899677977-9e10cb588f70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1592899677977-9e10cb588f70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Charger" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Fast Charger 65W</h3>
+                                    <p class="text-sm">Original Quality</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Power Bank" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Power Bank 20000mAh</h3>
+                                    <p class="text-sm">Fast Charging</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Headset" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Wireless Headset</h3>
+                                    <p class="text-sm">Noise Cancellation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1586953983023-7c1e7a8e1b73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1586953983023-7c1e7a8e1b73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Screen Protector" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Tempered Glass</h3>
+                                    <p class="text-sm">Anti Gores</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Spareparts Gallery -->
+                <div x-show="activeTab === 'spareparts'" x-transition.duration.500ms>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1629654297293-c2e40e09a4f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1629654297293-c2e40e09a4f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Battery" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Original Battery</h3>
+                                    <p class="text-sm">All Brands Available</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1597872200962-0b652c2c80c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1597872200962-0b652c2c80c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="LCD Screen" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">LCD Display</h3>
+                                    <p class="text-sm">Original & Compatible</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1585664819768-7fb6a13f8e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1585664819768-7fb6a13f8e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Motherboard" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Motherboard</h3>
+                                    <p class="text-sm">IC & Component</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1616587894289-79f8eb81bfbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1616587894289-79f8eb81bfbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Camera" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Camera Module</h3>
+                                    <p class="text-sm">Front & Back Camera</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools Gallery -->
+                <div x-show="activeTab === 'tools'" x-transition.duration.500ms>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Repair Tools" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Professional Toolkit</h3>
+                                    <p class="text-sm">Complete Set</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1581244273192-3b4e90d6c973?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1581244273192-3b4e90d6c973?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Soldering" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Soldering Station</h3>
+                                    <p class="text-sm">Precision Work</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1581235725708-ccd2dc2f1e07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1581235725708-ccd2dc2f1e07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Multimeter" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Digital Multimeter</h3>
+                                    <p class="text-sm">Testing & Measuring</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Microscope" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Digital Microscope</h3>
+                                    <p class="text-sm">Micro Soldering</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Process Gallery -->
+                <div x-show="activeTab === 'process'" x-transition.duration.500ms>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Diagnosis" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Diagnosis Awal</h3>
+                                    <p class="text-sm">Pengecekan Kerusakan</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1581092335871-4b8a8f8e6d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1581092335871-4b8a8f8e6d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Disassembly" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Pembongkaran</h3>
+                                    <p class="text-sm">Proses Membuka Perangkat</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1581092160562-40aa08e7882a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e7882a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Repair Process" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Perbaikan</h3>
+                                    <p class="text-sm">Penggantian Komponen</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer gallery-item" data-image="https://images.unsplash.com/photo-1581092162384-898d3a3d6f7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1581092162384-898d3a3d6f7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="Quality Test" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end">
+                                <div class="p-4 text-white">
+                                    <h3 class="font-semibold">Quality Control</h3>
+                                    <p class="text-sm">Testing & Finishing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="lightbox-img">
+    </div>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Testimoni Pelanggan</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
+                <p class="text-gray-600 mt-4">Apa kata mereka tentang layanan kami</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gradient-to-br from-gray-50 to-blue-50 p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Customer" 
+                             class="w-16 h-16 rounded-full object-cover border-4 border-blue-600">
+                        <div class="ml-4">
+                            <h3 class="font-bold text-gray-800">Sarah Wijaya</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Service sangat cepat dan profesional! iPhone 11 saya mati total, 1 hari sudah selesai. Terima kasih HP Service!"</p>
+                    <p class="text-sm text-blue-600 mt-2">Device: iPhone 11</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gradient-to-br from-gray-50 to-green-50 p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Customer" 
+                             class="w-16 h-16 rounded-full object-cover border-4 border-green-600">
+                        <div class="ml-4">
+                            <h3 class="font-bold text-gray-800">Budi Santoso</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Ganti LCD Samsung S22 Ultra, hasilnya sempurna seperti baru. Harga terjangkau dan garansi panjang."</p>
+                    <p class="text-sm text-blue-600 mt-2">Device: Samsung S22 Ultra</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-gradient-to-br from-gray-50 to-purple-50 p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Customer" 
+                             class="w-16 h-16 rounded-full object-cover border-4 border-purple-600">
+                        <div class="ml-4">
+                            <h3 class="font-bold text-gray-800">Linda Kartika</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Service battery Xiaomi 12 Pro, fast respon dan hasil memuaskan. Recommended banget!"</p>
+                    <p class="text-sm text-blue-600 mt-2">Device: Xiaomi 12 Pro</p>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card bg-gradient-to-br from-gray-50 to-orange-50 p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="Customer" 
+                             class="w-16 h-16 rounded-full object-cover border-4 border-orange-600">
+                        <div class="ml-4">
+                            <h3 class="font-bold text-gray-800">Andi Pratama</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"HP Jadul Nokia saya bisa hidup lagi! Terima kasih teknisi yang berpengalaman. Sangat direkomendasikan!"</p>
+                    <p class="text-sm text-blue-600 mt-2">Device: Nokia 3310</p>
+                </div>
+                
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card bg-gradient-to-br from-gray-50 to-cyan-50 p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/5.jpg" alt="Customer" 
+                             class="w-16 h-16 rounded-full object-cover border-4 border-cyan-600">
+                        <div class="ml-4">
+                            <h3 class="font-bold text-gray-800">Dewi Lestari</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Pelayanan ramah, harga transparan, dan hasil memuaskan. Pasti akan kembali lagi!"</p>
+                    <p class="text-sm text-blue-600 mt-2">Device: Oppo Reno 8</p>
+                </div>
+                
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card bg-gradient-to-br from-gray-50 to-pink-50 p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/6.jpg" alt="Customer" 
+                             class="w-16 h-16 rounded-full object-cover border-4 border-pink-600">
+                        <div class="ml-4">
+                            <h3 class="font-bold text-gray-800">Rizki Firmansyah</h3>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Service fingerprint dan charging port beres dalam 1 hari. Sekarang HP saya seperti baru lagi!"</p>
+                    <p class="text-sm text-blue-600 mt-2">Device: Google Pixel 6</p>
+                </div>
+            </div>
+            
+            <!-- Add Testimonial Button -->
+            <div class="text-center mt-12">
+                <button onclick="showTestimonialForm()" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition hover-scale">
+                    <i class="fas fa-pen mr-2"></i>Tulis Testimoni
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Form Modal -->
+    <div id="testimonialModal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.8);">
+        <div style="background:white; width:90%; max-width:500px; margin:50px auto; padding:30px; border-radius:20px; position:relative;">
+            <span onclick="closeTestimonialForm()" style="position:absolute; right:20px; top:20px; font-size:30px; cursor:pointer;">&times;</span>
+            <h3 class="text-2xl font-bold mb-4">Tulis Testimoni</h3>
+            <form id="testimonialForm">
+                <input type="text" placeholder="Nama Anda" class="w-full px-4 py-2 mb-3 border rounded-lg" required>
+                <select class="w-full px-4 py-2 mb-3 border rounded-lg">
+                    <option>iPhone</option>
+                    <option>Android</option>
+                    <option>HP Jadul</option>
+                </select>
+                <textarea placeholder="Testimoni Anda..." rows="4" class="w-full px-4 py-2 mb-3 border rounded-lg" required></textarea>
+                <div class="mb-3">
+                    <p class="mb-2">Rating:</p>
+                    <div class="flex gap-2 text-2xl text-gray-300">
+                        <i class="far fa-star rating-star" data-rating="1"></i>
+                        <i class="far fa-star rating-star" data-rating="2"></i>
+                        <i class="far fa-star rating-star" data-rating="3"></i>
+                        <i class="far fa-star rating-star" data-rating="4"></i>
+                        <i class="far fa-star rating-star" data-rating="5"></i>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold">Kirim Testimoni</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-blue-900 to-purple-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Hubungi Kami</h2>
+                <div class="w-24 h-1 bg-white mx-auto"></div>
+                <p class="mt-4 text-blue-200">Konsultasi gratis & cepat respon</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="animate-slideInLeft">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4 group">
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center transition transform group-hover:scale-110">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">WhatsApp</p>
+                                <p class="text-blue-200">+62 812-3456-7890</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4 group">
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center transition transform group-hover:scale-110">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Email</p>
+                                <p class="text-blue-200">info@hpservice.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4 group">
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center transition transform group-hover:scale-110">
+                                <i class="fas fa-phone text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Telepon</p>
+                                <p class="text-blue-200">(021) 1234-5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4 group">
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center transition transform group-hover:scale-110">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Alamat</p>
+                                <p class="text-blue-200">Jl. Raya Service No. 123, Jakarta Selatan</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Business Hours -->
+                        <div class="mt-8 p-4 bg-white/10 rounded-xl">
+                            <h3 class="font-bold mb-3"><i class="far fa-clock mr-2"></i>Jam Operasional</h3>
+                            <p>Senin - Sabtu: 09:00 - 20:00</p>
+                            <p>Minggu: By Appointment</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-slideInRight">
+                    <form id="contactForm" class="space-y-4">
+                        <input type="text" name="name" placeholder="Nama Anda" required
+                               class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:border-white transition">
+                        <input type="email" name="email" placeholder="Email" required
+                               class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:border-white transition">
+                        <input type="tel" name="phone" placeholder="No. WhatsApp" required
+                               class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:border-white transition">
+                        <select name="device" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:border-white transition">
+                            <option value="" disabled selected>Tipe Device</option>
+                            <option value="iphone">iPhone</option>
+                            <option value="android">Android</option>
+                            <option value="old_phone">HP Jadul</option>
+                            <option value="accessory">Aksesoris</option>
+                        </select>
+                        <select name="service_type" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:border-white transition">
+                            <option value="" disabled selected>Jenis Service</option>
+                            <option value="lcd">Ganti LCD</option>
+                            <option value="battery">Ganti Battery</option>
+                            <option value="charging">Port Charging</option>
+                            <option value="camera">Camera Repair</option>
+                            <option value="software">Software Update</option>
+                            <option value="other">Lainnya</option>
+                        </select>
+                        <textarea name="message" rows="4" placeholder="Jelaskan masalah yang dialami" required
+                                  class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:border-white transition"></textarea>
+                        <button type="submit" 
+                                class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition w-full hover-scale">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Konsultasi Sekarang
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-microchip text-2xl text-blue-500"></i>
+                        <span class="text-xl font-bold">HP Service</span>
+                    </div>
+                    <p class="text-gray-400">Solusi terbaik untuk perbaikan HP Anda. Cepat, tepat, dan terpercaya.</p>
+                    <div class="mt-4 flex space-x-3">
+                        <i class="fab fa-cc-visa text-2xl text-gray-400"></i>
+                        <i class="fab fa-cc-mastercard text-2xl text-gray-400"></i>
+                        <i class="fab fa-cc-paypal text-2xl text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Layanan</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-chevron-right text-xs mr-2"></i>Service HP All Brands</li>
+                        <li><i class="fas fa-chevron-right text-xs mr-2"></i>Ganti Sparepart Original</li>
+                        <li><i class="fas fa-chevron-right text-xs mr-2"></i>Aksesoris Premium</li>
+                        <li><i class="fas fa-chevron-right text-xs mr-2"></i>Software Update & Jailbreak</li>
+                        <li><i class="fas fa-chevron-right text-xs mr-2"></i>Data Recovery</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition">Beranda</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Layanan</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition">Galeri</a></li>
+                        <li><a href="#testimonials" class="hover:text-white transition">Testimoni</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-3">Dapatkan promo & info terbaru</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Email Anda" class="flex-1 px-3 py-2 rounded-l-lg text-gray-800">
+                        <button class="bg-blue-600 px-4 py-2 rounded-r-lg hover:bg-blue-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600 transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p>&copy; 2024 HP Service Professional. All rights reserved.</p>
+                <p class="text-gray-400 mt-2">Service HP 1 Hari Jadi - Cepat, Tepat, Berpengalaman</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281234567890" target="_blank"
+       class="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 hover-scale">
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">1</span>
+    </a>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.classList.add('shadow-xl');
+            } else {
+                navbar.classList.remove('shadow-xl');
+            }
+        });
+
+        // Counter animation
+        function animateCounter() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 50;
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        if (target === 4.9) {
+                            counter.innerText = current.toFixed(1);
+                        } else {
+                            counter.innerText = Math.ceil(current);
+                        }
+                        setTimeout(updateCounter, 30);
+                    } else {
+                        counter.innerText = target === 4.9 ? target : target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        // Trigger counter when stats section is visible
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        const statsSection = document.querySelector('.counter-box');
+        if (statsSection) {
+            observer.observe(statsSection.parentElement);
+        }
+
+        // Gallery lightbox
+        const modal = document.getElementById('lightbox');
+        const modalImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementsByClassName('close')[0];
+        
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                modal.style.display = 'block';
+                modalImg.src = this.getAttribute('data-image');
+            });
+        });
+        
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        };
+        
+        modal.onclick = function() {
+            modal.style.display = 'none';
+        };
+
+        // Testimonial form
+        window.showTestimonialForm = function() {
+            document.getElementById('testimonialModal').style.display = 'block';
+        };
+        
+        window.closeTestimonialForm = function() {
+            document.getElementById('testimonialModal').style.display = 'none';
+        };
+        
+        // Rating stars
+        let selectedRating = 0;
+        document.querySelectorAll('.rating-star').forEach(star => {
+            star.addEventListener('click', function() {
+                selectedRating = parseInt(this.getAttribute('data-rating'));
+                document.querySelectorAll('.rating-star').forEach(s => {
+                    const rating = parseInt(s.getAttribute('data-rating'));
+                    if (rating <= selectedRating) {
+                        s.classList.remove('far');
+                        s.classList.add('fas');
+                        s.style.color = '#fbbf24';
+                    } else {
+                        s.classList.remove('fas');
+                        s.classList.add('far');
+                        s.style.color = '#d1d5db';
+                    }
+                });
+            });
+        });
+        
+        document.getElementById('testimonialForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih atas testimoni Anda! Testimoni akan ditampilkan setelah disetujui admin.');
+            closeTestimonialForm();
+        });
+        
+        // Contact form
+        document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('[name="name"]').value;
+            const device = this.querySelector('[name="device"]').value;
+            const serviceType = this.querySelector('[name="service_type"]').value;
+            const message = this.querySelector('[name="message"]').value;
+            const whatsappNumber = '6281234567890';
+            const text = `Halo, saya ${name}%0A%0A*Device:* ${device}%0A*Jenis Service:* ${serviceType}%0A*Keluhan:* ${message}%0A%0AMohon informasi lebih lanjut. Terima kasih.`;
+            window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
+        });
+        
+        // Add animation on scroll
+        const scrollObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, scrollObserverOptions);
+        
+        document.querySelectorAll('.service-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            scrollObserver.observe(el);
+        });
+    </script>
+</body>
+</html>
