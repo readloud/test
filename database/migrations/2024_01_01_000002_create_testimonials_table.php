@@ -8,6 +8,9 @@ return new class extends Migration
 {
     public function up(): void
     {
+        // Cek apakah tabel sudah ada, jika ada hapus dulu
+        Schema::dropIfExists('testimonials');
+        
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->string('name');
